@@ -1,4 +1,4 @@
-// Função para carregar e visualizar várias imagens
+// Função para carregar e visualizar várias imagens com melhor qualidade
 function loadImages(event) {
     const files = event.target.files;
     const container = document.getElementById('image-container');
@@ -7,23 +7,54 @@ function loadImages(event) {
     Array.from(files).forEach((file, index) => {
         const reader = new FileReader();
         reader.onload = function (e) {
-            const img = document.createElement('img');
+            const img = new Image();
             img.src = e.target.result;
-            img.alt = 'Imagem carregada';
-            img.style.maxWidth = '150px';
-            img.style.border = '1px solid #ccc';
-            img.style.borderRadius = '5px';
-            img.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.1)';
-            img.style.margin = '5px';
-            img.draggable = true; // Torna a imagem arrastável
-            img.dataset.index = index; // Armazena o índice da imagem
 
-            // Eventos de arrastar e soltar
-            img.addEventListener('dragstart', handleDragStart);
-            img.addEventListener('dragover', handleDragOver);
-            img.addEventListener('drop', handleDrop);
+            img.onload = function () {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
 
-            container.appendChild(img);
+                // Define o tamanho máximo para redimensionar a imagem
+                const MAX_WIDTH = 800;
+                const MAX_HEIGHT = 800;
+                let width = img.width;
+                let height = img.height;
+
+                if (width > height) {
+                    if (width > MAX_WIDTH) {
+                        height *= MAX_WIDTH / width;
+                        width = MAX_WIDTH;
+                    }
+                } else {
+                    if (height > MAX_HEIGHT) {
+                        width *= MAX_HEIGHT / height;
+                        height = MAX_HEIGHT;
+                    }
+                }
+
+                canvas.width = width;
+                canvas.height = height;
+                ctx.drawImage(img, 0, 0, width, height);
+
+                // Cria uma nova imagem a partir do canvas
+                const processedImg = document.createElement('img');
+                processedImg.src = canvas.toDataURL('image/jpeg', 0.9); // Qualidade ajustada
+                processedImg.alt = 'Imagem carregada';
+                processedImg.style.maxWidth = '150px';
+                processedImg.style.border = '1px solid #ccc';
+                processedImg.style.borderRadius = '5px';
+                processedImg.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.1)';
+                processedImg.style.margin = '5px';
+                processedImg.draggable = true; // Torna a imagem arrastável
+                processedImg.dataset.index = index; // Armazena o índice da imagem
+
+                // Eventos de arrastar e soltar
+                processedImg.addEventListener('dragstart', handleDragStart);
+                processedImg.addEventListener('dragover', handleDragOver);
+                processedImg.addEventListener('drop', handleDrop);
+
+                container.appendChild(processedImg);
+            };
         };
         reader.readAsDataURL(file);
     });
