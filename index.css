@@ -1,0 +1,105 @@
+/* Estilo geral */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0f0f13;
+    color: #1f1a1a;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+/* logo */
+
+
+
+/* Título */
+h1 {
+    font-size: 2rem;
+    color: #4CAF50;
+    margin-bottom: 80px;
+    margin-top: 10px;
+}
+
+/* Título secundário (h2) */
+h2 {
+    margin-top: -10px;
+    font-size: 1.2rem; /* Aumenta o tamanho da fonte */
+    color: #f2f1f5; /* Cor dourada para destacar */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adiciona sombra ao texto */
+    margin-bottom: 15px; /* Ajusta o espaçamento inferior */
+    letter-spacing: 2px; /* Adiciona espaçamento entre as letras */
+    animation: fade-slide 3s ease-in-out infinite; /* Adiciona a nova animação */
+    font-family: 'Playfair Display', serif;
+    border: 1px solid #ccc; /* Adiciona uma borda ao redor do título */
+    padding: 2px 5px;
+}
+
+
+/* Input de arquivo */
+input[type="file"] {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+/* Botão */
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Imagem carregada */
+img {
+    margin-top: 0px;
+    margin-bottom: -50px;
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    
+}
+
+/* Contêiner de imagens */
+#image-container {
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px; /* Reduz o espaçamento horizontal e vertical entre as imagens */
+    justify-content: center; /* Centraliza as imagens no contêiner */
+    border-top: 2px solid #ccc; /* Linha superior para separar o contêiner */
+    padding-top: 2px;
+}
+
+/* Imagem carregada */
+#image-container img {
+    margin: 0; /* Remove margens extras */
+    max-width: 100px; /* Ajusta o tamanho das imagens */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    padding: 5px; /* Adiciona um espaço interno para destacar a divisão */
+}
+
+#image-container img:hover {
+    transform: scale(1.05); /* Adiciona um efeito de zoom ao passar o mouse */
+    border-color: #4CAF50; /* Destaca a borda ao passar o mouse */
+}
