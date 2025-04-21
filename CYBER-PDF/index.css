@@ -1,11 +1,11 @@
-
+/* Estilo geral */
 body {
     margin: 0;
     padding: 0;
     color: #ffffff; /* Texto branco */
     font-family: 'Arial', 'Helvetica', sans-serif;
-    /* A line-height of 1.6 improves readability by providing sufficient spacing between lines of text */
-    line-height: 1.6;
+    line-height: 1.6; /* Melhora a legibilidade */
+    background-color: #000; /* Fundo preto */
 }
 
 /* Personalização para imagens com a classe img-fluid mb-3 */
@@ -16,12 +16,11 @@ body {
     height: auto; /* Mantém a proporção da imagem */
     border-radius: 10px; /* Adiciona bordas arredondadas */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave para hover */
-    margin-top: 0px;
 }
 
 .img-fluid.mb-3:hover {
-    transform: scale(1.0); /* Aumenta o tamanho da imagem ao passar o mouse */
-    box-shadow: 2px 2px 5px rgba(3, 238, 22, 0.5); /* Adiciona sombra */
+    transform: scale(1.1); /* Aumenta o tamanho da imagem ao passar o mouse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adiciona sombra */
 }
 
 /* Barra de navegação */
@@ -29,7 +28,7 @@ body {
     color: black;
     padding: 5px 12px;
     font-size: 16px;
-    border: 1 px solid white;
+    border: 1px solid white; /* Corrigido o erro de sintaxe */
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.5s ease, transform 0.5s ease;
@@ -39,23 +38,20 @@ body {
     color: rgb(12, 238, 87);
     font-weight: bold;
     font-size: 1.5rem;
-    
 }
 
 .navbar .nav-link {
-    color: black;
+    color: #fff; /* Melhor contraste para links */
     transition: color 0.3s ease;
-    
 }
 
 .navbar .nav-link:hover {
-    color: black;
+    color: #333; /* Melhor contraste */
     background-color: rgba(12, 228, 84, 0.527);
     padding: 5px 12px;
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.5s ease, transform 0.5s ease;
 }
 
 .navbar .dropdown-menu {
@@ -75,7 +71,6 @@ body {
     background-color: var(--primary-color);
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.5s ease, transform 0.5s ease;
 }
 
 /* Conteúdo principal */
@@ -92,7 +87,6 @@ h1 {
 h2 {
     font-size: 1.5rem;
     color: #ccc; /* Define o subtítulo com letras cinza claro */
-    
 }
 
 /* Input de arquivos */
@@ -138,7 +132,7 @@ button:active {
 #image-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 0px;
+    gap: 20px; /* Ajustado para espaçamento consistente */
     justify-content: center;
     margin-top: 20px;
 }
@@ -217,7 +211,7 @@ button:active {
     }
 
     #image-container img {
-        max-width: 30%;
+        max-width: 120px; /* Ajustado para tamanhos menores */
     }
 }
 
@@ -241,6 +235,6 @@ button:active {
     }
 
     #image-container img {
-        max-width: 25%;
+        max-width: 100px; /* Ajustado para tamanhos menores */
     }
 }
