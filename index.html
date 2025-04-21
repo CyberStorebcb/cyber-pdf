@@ -15,53 +15,46 @@
 <body>
 
     <!-- Barra de Navegação -->
-    <nav class="navbar navbar-expand-md bg-light">
+    <nav class="navbar navbar-expand-md bg-transparent navbar-light fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Cyber Store</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Word</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#">Excel</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#">Testar</a>
-                </li>
-                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Mais opções
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Loja</a></li>
-                    <li><a class="dropdown-item" href="#">Instagram</a></li>
-                    <li><a class="dropdown-item" href="#">Entrar em contato</a></li>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Word</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Excel</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Testar</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Mais opções
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Loja</a></li>
+                            <li><a class="dropdown-item" href="#">Instagram</a></li>
+                            <li><a class="dropdown-item" href="#">Entrar em contato</a></li>
+                        </ul>
+                    </li>
                 </ul>
-                </li>
-            </ul>
             </div>
             <!-- Botão para alternar entre os modos -->
-<button id="theme-toggle" class="btn btn-outline-secondary ms-3">🌙</button>
+            <button id="theme-toggle" class="btn btn-outline-secondary ms-3" aria-label="Alternar entre modo claro e escuro">🌙</button>
         </div>
     </nav>
 
     <!-- Conteúdo Principal -->
     <div class="container text-center mt-4">
         <img src="CYBER-PDF/imagens/logo.png" alt="Logo da Cyber Store" class="img-fluid mb-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2>Carregue os arquivos abaixo</h2>
-                </div>
-                <div class="col-md-6">
-                    <input type="file" id="file-input" accept="image/*" multiple class="form-control">
-                </div>
-            </div>
-        </div>
+        <h3>Cᴀʀʀᴇɢᴜᴇ ᴏs ᴀʀǫᴜɪᴠᴏs ᴀʙᴀɪxᴏ</h3>
+        <label for="file-input" class="form-label styled-label">Sᥱᥣᥱᥴι᥆ᥒᥱ ᥆᥉ ᥲrqᥙι᥎᥆᥉:</label>
+        <input type="file" id="file-input" accept="image/*" multiple onchange="loadImages(event)" class="form-control mb-3">
         <div id="image-container" class="d-flex flex-wrap gap-3 justify-content-center"></div>
         <button id="generate-pdf" class="btn btn-primary mt-3" aria-label="Gerar PDF dos arquivos carregados">Gerar PDF</button>
     </div>

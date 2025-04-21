@@ -9,15 +9,35 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Adicione transições suaves para a troca de temas */
-body {
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
 /* Modo escuro */
 body.dark-mode {
     background-color: #000; /* Fundo preto */
     color: #fff; /* Texto branco */
+}
+
+body.dark-mode .navbar {
+    background-color: #333; /* Fundo escuro */
+    color: #fff; /* Texto branco */
+}
+
+body.dark-mode .navbar .nav-link {
+    color: #fff; /* Links brancos */
+}
+
+body.dark-mode .navbar .nav-link:hover {
+    color: #ccc; /* Links com hover em cinza claro */
+}
+
+body.dark-mode .navbar .dropdown-menu {
+    background-color: #444; /* Fundo do dropdown no modo escuro */
+}
+
+body.dark-mode .navbar .dropdown-item {
+    color: #fff; /* Itens do dropdown no modo escuro */
+}
+
+body.dark-mode .navbar .dropdown-item:hover {
+    color: #27c434; /* Hover no dropdown no modo escuro */
 }
 
 /* Modo claro */
@@ -26,29 +46,57 @@ body.light-mode {
     color: #000; /* Texto preto */
 }
 
-/* Personalização para imagens com a classe img-fluid mb-3 */
-.img-fluid.mb-3 {
-    display: block;
-    margin: 0 auto; /* Centraliza a imagem horizontalmente */
-    max-width: 500px; /* Define um tamanho máximo */
-    height: auto; /* Mantém a proporção da imagem */
-    border-radius: 10px; /* Adiciona bordas arredondadas */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave para hover */
+body.light-mode .navbar {
+    background-color: #f8f9fa; /* Fundo claro */
+    color: #000; /* Texto preto */
 }
 
-.img-fluid.mb-3:hover {
-    box-shadow: 0 4px 8px rgba(10, 236, 2, 0.5); /* Adiciona sombra */
+body.light-mode .navbar .nav-link {
+    color: #000; /* Links pretos */
+}
+
+body.light-mode .navbar .nav-link:hover {
+    color: #555; /* Links com hover em cinza escuro */
+}
+
+body.light-mode .navbar .dropdown-menu {
+    background-color: #fff; /* Fundo do dropdown no modo claro */
+}
+
+body.light-mode .navbar .dropdown-item {
+    color: #000; /* Itens do dropdown no modo claro */
+}
+
+body.light-mode .navbar .dropdown-item:hover {
+    color: #27c434; /* Hover no dropdown no modo claro */
+}
+
+/* Botão de alternância */
+#theme-toggle {
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 1px solid #ccc;
+    padding: 8px 16px;
+    border-radius: 5px;
+}
+
+body.dark-mode #theme-toggle {
+    background-color: #fff;
+    color: #000;
+}
+
+body.light-mode #theme-toggle {
+    background-color: #000;
+    color: #fff;
 }
 
 /* Barra de navegação */
 .navbar {
-    color: black;
     padding: 5px 12px;
     font-size: 16px;
     border: 1px solid white; /* Corrigido o erro de sintaxe */
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.5s ease, transform 0.5s ease, background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar .navbar-brand {
@@ -58,7 +106,7 @@ body.light-mode {
 }
 
 .navbar .nav-link {
-    color: black; /* Melhor contraste para links */
+    color: inherit; /* Herda a cor do pai */
     transition: color 0.3s ease;
 }
 
@@ -90,49 +138,25 @@ body.light-mode {
     cursor: pointer;
 }
 
-/* Modo escuro para navbar */
-body.dark-mode .navbar {
-    background-color: #333;
-    color: #fff;
-}
-
-/* Modo claro para navbar */
-body.light-mode .navbar {
-    background-color: #f8f9fa;
-    color: #000;
-}
-
-/* Botão de alternância */
-#theme-toggle {
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-body.dark-mode #theme-toggle {
-    background-color: #fff;
-    color: #000;
-}
-
-body.light-mode #theme-toggle {
-    background-color: #000;
-    color: #fff;
-}
-
 /* Conteúdo principal */
 .container {
     text-align: center;
     color: white; /* Define a cor padrão do texto como branca */
+    margin-bottom: 100px;
+    margin-top: 0px;
 }
 
-h2 {
+h3 {
     font-size: 1.5rem;
     color: #ccc; /* Define o subtítulo com letras cinza claro */
+    text-shadow: 2px 2px 4px #000, 0 0 10px black, 0 0 20px black; /* Adiciona sombra preta e brilho ao texto */
 }
 
 /* Input de arquivos */
 input[type="file"] {
     display: block;
-    margin: 20px auto;
     padding: 10px;
+    margin: auto;
     border: 1px solid #555;
     border-radius: 5px;
     transition: border-color 0.3s ease, background-color 0.3s ease;
@@ -188,11 +212,21 @@ button:active {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
+/* Estilo para a label */
+.styled-label {
+    color: white; /* Cor do texto */
+    font-size: 1.2rem; /* Tamanho da fonte */
+    text-shadow: 2px 2px 4px #000, 0 0 10px #000, 0 0 20px #000; /* Sombra e brilho preto */
+    display: inline-block; /* Garante que o estilo seja aplicado corretamente */
+    margin-bottom: 10px; /* Espaçamento inferior */
+    border: 1px solid white;
+    padding: 5px;
+}
+
 /* Responsividade */
 
 /* Telas grandes (acima de 1200px) */
-@media (min-width: 1200px) 
-{
+@media (min-width: 1200px) {
     h2 {
         font-size: 2rem;
     }
