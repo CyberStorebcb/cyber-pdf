@@ -157,7 +157,47 @@ button:active {
 
 /* Responsividade */
 
-/* Tablet e dispositivos menores */
+/* Telas grandes (acima de 1200px) */
+@media (min-width: 1200px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    #image-container img {
+        max-width: 200px;
+    }
+
+    button {
+        font-size: 1.2rem;
+        padding: 12px 24px;
+    }
+}
+
+/* Telas intermediárias (entre 768px e 1200px) */
+@media (min-width: 768px) and (max-width: 1200px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    #image-container img {
+        max-width: 180px;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}
+
+/* Tablet e dispositivos menores (até 768px) */
 @media (max-width: 768px) {
     h1 {
         font-size: 2rem;
@@ -181,7 +221,7 @@ button:active {
     }
 }
 
-/* Dispositivos móveis */
+/* Dispositivos móveis (até 480px) */
 @media (max-width: 480px) {
     h1 {
         font-size: 1.8rem;
