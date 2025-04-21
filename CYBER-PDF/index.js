@@ -151,24 +151,34 @@ document.getElementById('generate-pdf').addEventListener('click', async () => {
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
+    const navbar = document.querySelector('.navbar');
 
     // Verifica o tema salvo no localStorage
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        body.classList.add(savedTheme);
-        themeToggle.textContent = savedTheme === 'dark-mode' ? 'Modo Claro' : 'Modo Escuro';
+    if (savedTheme === 'dark') {
+        body.classList.add('bg-dark', 'text-light');
+        navbar.classList.replace('bg-light', 'bg-dark');
+        themeToggle.innerHTML = '🌞'; // Emoji de sol para modo claro
+    } else {
+        body.classList.add('bg-light', 'text-dark');
+        navbar.classList.replace('bg-dark', 'bg-light');
+        themeToggle.innerHTML = '🌙'; // Emoji de lua para modo escuro
     }
 
     // Alterna entre os temas
     themeToggle.addEventListener('click', () => {
-        if (body.classList.contains('dark-mode')) {
-            body.classList.replace('dark-mode', 'light-mode');
-            themeToggle.textContent = 'Modo Escuro';
-            localStorage.setItem('theme', 'light-mode');
+        if (body.classList.contains('bg-dark')) {
+            body.classList.replace('bg-dark', 'bg-light');
+            body.classList.replace('text-light', 'text-dark');
+            navbar.classList.replace('bg-dark', 'bg-light');
+            themeToggle.innerHTML = '🌙'; // Emoji de lua para modo escuro
+            localStorage.setItem('theme', 'light');
         } else {
-            body.classList.replace('light-mode', 'dark-mode');
-            themeToggle.textContent = 'Modo Claro';
-            localStorage.setItem('theme', 'dark-mode');
+            body.classList.replace('bg-light', 'bg-dark');
+            body.classList.replace('text-dark', 'text-light');
+            navbar.classList.replace('bg-light', 'bg-dark');
+            themeToggle.innerHTML = '🌞'; // Emoji de sol para modo claro
+            localStorage.setItem('theme', 'dark');
         }
     });
 });

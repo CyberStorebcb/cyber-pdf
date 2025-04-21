@@ -45,16 +45,23 @@
             </ul>
             </div>
             <!-- Botão para alternar entre os modos -->
-<button id="theme-toggle" class="btn btn-outline-secondary ms-3">Modo Escuro</button>
+<button id="theme-toggle" class="btn btn-outline-secondary ms-3">🌙</button>
         </div>
     </nav>
 
     <!-- Conteúdo Principal -->
     <div class="container text-center mt-4">
         <img src="CYBER-PDF/imagens/logo.png" alt="Logo da Cyber Store" class="img-fluid mb-3">
-        <h2>Carregue os arquivos abaixo</h2>
-        <label for="file-input" class="form-label">Selecione os arquivos:</label>
-        <input type="file" id="file-input" accept="image/*" multiple onchange="loadImages(event)" class="form-control mb-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Carregue os arquivos abaixo</h2>
+                </div>
+                <div class="col-md-6">
+                    <input type="file" id="file-input" accept="image/*" multiple class="form-control">
+                </div>
+            </div>
+        </div>
         <div id="image-container" class="d-flex flex-wrap gap-3 justify-content-center"></div>
         <button id="generate-pdf" class="btn btn-primary mt-3" aria-label="Gerar PDF dos arquivos carregados">Gerar PDF</button>
     </div>
