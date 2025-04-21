@@ -1,56 +1,138 @@
+/* Estilo geral */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9;
+    background-color: black;
     color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
+/* Container principal */
 .container {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
     background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 800px;
     text-align: center;
-    margin-bottom: 20px;
 }
 
+/* Título */
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+/* Input de arquivo */
 input[type="file"] {
     display: block;
     margin: 20px auto;
     padding: 10px;
     font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 400px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
 }
 
+input[type="file"]:hover {
+    border-color: #007bff;
+}
+
+/* Textarea */
 textarea {
     width: 100%;
     height: 300px;
     margin: 20px 0;
-    padding: 10px;
-    font-size: 16px;
+    padding: 15px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 8px;
+    font-size: 16px;
     resize: none;
+    background-color: #f9f9f9;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
 }
 
+textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Botões */
 button {
-    display: block;
-    width: 100%;
-    padding: 10px;
+    padding: 12px 25px;
     font-size: 16px;
     color: #fff;
     background-color: #007bff;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
 }
 
 button:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(1);
+}
+
+/* Pré-visualização do documento */
+#docx-preview {
+    width: 100%;
+    max-width: 210mm; /* Largura de uma folha A4 */
+    height: auto;
+    min-height: 297mm; /* Altura de uma folha A4 */
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px auto;
+    background-color: #fff;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    textarea {
+        height: 250px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    textarea {
+        height: 200px;
+    }
+
+    input[type="file"] {
+        font-size: 14px;
+    }
 }
