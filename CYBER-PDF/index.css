@@ -1,4 +1,11 @@
 /* Estilo geral */
+html, body {
+    overflow: hidden; /* Remove a barra de rolagem */
+    height: 100%; /* Garante que o conteúdo ocupe toda a altura da tela */
+    margin: 0; /* Remove margens padrão */
+    padding: 0; /* Remove preenchimentos padrão */
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -77,6 +84,11 @@ body.light-mode .navbar .dropdown-item:hover {
     border: 1px solid #ccc;
     padding: 8px 16px;
     border-radius: 5px;
+    position: relative;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    font-size: 1rem;
 }
 
 body.dark-mode #theme-toggle {
@@ -146,6 +158,15 @@ body.light-mode #theme-toggle {
     margin-top: 0px;
 }
 
+.container.text-center.mt-4 {
+    display: flex;
+    flex-direction: column; /* Organiza os elementos verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente */
+    min-height: 100vh; /* Garante que o container ocupe a altura total da tela */
+    margin: 0 auto; /* Centraliza horizontalmente se necessário */
+}
+
 h3 {
     font-size: 1.5rem;
     color: #ccc; /* Define o subtítulo com letras cinza claro */
@@ -201,7 +222,6 @@ button:active {
 }
 
 #image-container img {
-    max-width: 150px;
     border: 2px solid var(--highlight-color);
     border-radius: 5px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -210,6 +230,14 @@ button:active {
 #image-container img:hover {
     transform: scale(1.1);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+#image-container img.img-fluid.mb-3 {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Estilo para a label */
@@ -239,6 +267,14 @@ button:active {
         font-size: 1.2rem;
         padding: 12px 24px;
     }
+
+    h3 {
+        font-size: 2rem;
+    }
+
+    #image-container img {
+        max-width: 500px;
+    }
 }
 
 /* Telas intermediárias (entre 768px e 1200px) */
@@ -254,6 +290,14 @@ button:active {
     button {
         font-size: 1rem;
         padding: 10px 20px;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    #image-container img {
+        max-width: 400px;
     }
 }
 
@@ -275,6 +319,19 @@ button:active {
     .img-fluid.mb-3 {
         max-width: 300px;
     }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    #image-container img {
+        max-width: 300px;
+    }
+
+    #theme-toggle {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
 }
 
 /* Dispositivos móveis (até 480px) */
@@ -294,5 +351,18 @@ button:active {
 
     .img-fluid.mb-3 {
         max-width: 250px;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    #image-container img {
+        max-width: 250px;
+    }
+
+    #theme-toggle {
+        font-size: 0.8rem;
+        padding: 6px 10px;
     }
 }

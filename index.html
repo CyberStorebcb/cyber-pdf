@@ -52,11 +52,17 @@
     <!-- Conteúdo Principal -->
     <div class="container text-center mt-4">
         <img src="CYBER-PDF/imagens/logo.png" alt="Logo da Cyber Store" class="img-fluid mb-3">
-        <h3>Cᴀʀʀᴇɢᴜᴇ ᴏs ᴀʀǫᴜɪᴠᴏs ᴀʙᴀɪxᴏ</h3>
-        <label for="file-input" class="form-label styled-label">Sᥱᥣᥱᥴι᥆ᥒᥱ ᥆᥉ ᥲrqᥙι᥎᥆᥉:</label>
-        <input type="file" id="file-input" accept="image/*" multiple onchange="loadImages(event)" class="form-control mb-3">
-        <div id="image-container" class="d-flex flex-wrap gap-3 justify-content-center"></div>
-        <button id="generate-pdf" class="btn btn-primary mt-3" aria-label="Gerar PDF dos arquivos carregados">Gerar PDF</button>
+        <div class="row"></div>
+            <div class="col-md-6 col-sm-12 d-flex flex-column align-items-center">
+                <h3>Cᴀʀʀᴇɢᴜᴇ ᴏs ᴀʀǫᴜɪᴠᴏs ᴀʙᴀɪxᴏ</h3>
+                <input type="file" id="file-input" accept="image/*" multiple class="form-control mt-3">
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div id="image-container" class="d-flex flex-wrap gap-3 justify-content-center">
+                </div>
+                <button id="generate-pdf" class="btn btn-primary mt-3" aria-label="Gerar PDF dos arquivos carregados">Gerar PDF</button>
+            </div>
+        </div>
     </div>
 
 </body>
