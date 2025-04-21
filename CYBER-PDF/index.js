@@ -148,5 +148,29 @@ document.getElementById('generate-pdf').addEventListener('click', async () => {
     }
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
 
-   
+    // Verifica o tema salvo no localStorage
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        body.classList.add(savedTheme);
+        themeToggle.textContent = savedTheme === 'dark-mode' ? 'Modo Claro' : 'Modo Escuro';
+    }
+
+    // Alterna entre os temas
+    themeToggle.addEventListener('click', () => {
+        if (body.classList.contains('dark-mode')) {
+            body.classList.replace('dark-mode', 'light-mode');
+            themeToggle.textContent = 'Modo Escuro';
+            localStorage.setItem('theme', 'light-mode');
+        } else {
+            body.classList.replace('light-mode', 'dark-mode');
+            themeToggle.textContent = 'Modo Claro';
+            localStorage.setItem('theme', 'dark-mode');
+        }
+    });
+});
+
+

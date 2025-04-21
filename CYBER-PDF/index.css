@@ -6,6 +6,24 @@ body {
     font-family: 'Arial', 'Helvetica', sans-serif;
     line-height: 1.6; /* Melhora a legibilidade */
     background-color: #000; /* Fundo preto */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Adicione transições suaves para a troca de temas */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Modo escuro */
+body.dark-mode {
+    background-color: #000; /* Fundo preto */
+    color: #fff; /* Texto branco */
+}
+
+/* Modo claro */
+body.light-mode {
+    background-color: #fff; /* Fundo branco */
+    color: #000; /* Texto preto */
 }
 
 /* Personalização para imagens com a classe img-fluid mb-3 */
@@ -19,8 +37,7 @@ body {
 }
 
 .img-fluid.mb-3:hover {
-    transform: scale(1.1); /* Aumenta o tamanho da imagem ao passar o mouse */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adiciona sombra */
+    box-shadow: 0 4px 8px rgba(10, 236, 2, 0.5); /* Adiciona sombra */
 }
 
 /* Barra de navegação */
@@ -31,7 +48,7 @@ body {
     border: 1px solid white; /* Corrigido o erro de sintaxe */
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.5s ease, transform 0.5s ease;
+    transition: background-color 0.5s ease, transform 0.5s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar .navbar-brand {
@@ -41,7 +58,7 @@ body {
 }
 
 .navbar .nav-link {
-    color: #fff; /* Melhor contraste para links */
+    color: black; /* Melhor contraste para links */
     transition: color 0.3s ease;
 }
 
@@ -55,12 +72,12 @@ body {
 }
 
 .navbar .dropdown-menu {
-    background-color: #0e0707;
+    background-color: darkslategray;
     border: none;
 }
 
 .navbar .dropdown-item {
-    color: #fdfafa;
+    color: black;
     transition: background-color 0.3s ease;
 }
 
@@ -73,15 +90,37 @@ body {
     cursor: pointer;
 }
 
+/* Modo escuro para navbar */
+body.dark-mode .navbar {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Modo claro para navbar */
+body.light-mode .navbar {
+    background-color: #f8f9fa;
+    color: #000;
+}
+
+/* Botão de alternância */
+#theme-toggle {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode #theme-toggle {
+    background-color: #fff;
+    color: #000;
+}
+
+body.light-mode #theme-toggle {
+    background-color: #000;
+    color: #fff;
+}
+
 /* Conteúdo principal */
 .container {
     text-align: center;
     color: white; /* Define a cor padrão do texto como branca */
-}
-
-h1 {
-    font-size: 2.5rem;
-    color: white; /* Mantém o título principal com letras brancas */
 }
 
 h2 {
@@ -153,10 +192,6 @@ button:active {
 
 /* Telas grandes (acima de 1200px) */
 @media (min-width: 1200px) {
-    h1 {
-        font-size: 3rem;
-    }
-
     h2 {
         font-size: 2rem;
     }
@@ -173,10 +208,6 @@ button:active {
 
 /* Telas intermediárias (entre 768px e 1200px) */
 @media (min-width: 768px) and (max-width: 1200px) {
-    h1 {
-        font-size: 2.2rem;
-    }
-
     h2 {
         font-size: 1.4rem;
     }
@@ -193,10 +224,6 @@ button:active {
 
 /* Tablet e dispositivos menores (até 768px) */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 2rem;
-    }
-
     h2 {
         font-size: 1.2rem;
     }
@@ -217,10 +244,6 @@ button:active {
 
 /* Dispositivos móveis (até 480px) */
 @media (max-width: 480px) {
-    h1 {
-        font-size: 1.8rem;
-    }
-
     h2 {
         font-size: 1rem;
     }
