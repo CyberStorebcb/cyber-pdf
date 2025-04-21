@@ -1,80 +1,44 @@
-
-function generate() {
-    const doc = new docx.Document({
-      sections: [{
-        properties: {},
-        children: [
-          new docx.Paragraph({
-            children: [
-              new docx.TextRun("Hello World"),
-              new docx.TextRun({
-                text: "Foo Bar",
-                bold: true,
-              }),
-              new docx.TextRun({
-                text: "\tGithub is the best",
-                bold: true,
-              }),
-            ],
-          }),
-        ],
-      }]
-    });
-
-    docx.Packer.toBlob(doc).then(blob => {
-      console.log(blob);
-      saveAs(blob, "example.docx");
-      console.log("Document created successfully");
-    });
-  }
-  
-document.getElementById('download-word').addEventListener('click', () => {
-    // Verifica se a biblioteca docx está carregada
-    if (!window.docx) {
-        console.error('A biblioteca docx não foi carregada.');
-        alert('Erro: A biblioteca docx não foi carregada.');
+document.getElementById('upload-docx').addEventListener('change', async (event) => {
+    const file = event.target.files[0];
+    if (!file) {
+        alert('Por favor, selecione um arquivo .docx.');
         return;
     }
 
-    // Obtém o conteúdo do editor
-    const content = document.getElementById('word-editor').value;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        const arrayBuffer = e.target.result;
 
-    // Verifica se o conteúdo está vazio
-    if (!content) {
-        alert('Por favor, insira algum texto antes de baixar.');
-        return;
-    }
+        mammoth.extractRawText({ arrayBuffer: arrayBuffer })
+            .then((result) => {
+                console.log('Texto extraído:', result.value);
+                document.getElementById('docx-editor').value = result.value;
+            })
+            .catch((error) => {
+                console.error('Erro ao carregar o arquivo .docx:', error);
+                alert('Não foi possível carregar o arquivo. Verifique se ele está no formato correto.');
+            });
+    };
+    reader.readAsArrayBuffer(file);
+});
 
-    try {
-        // Cria o documento Word
-        const doc = new docx.Document({
-            sections: [
-                {
-                    children: [
-                        new docx.Paragraph({
-                            text: content,
-                            spacing: { after: 200 },
-                        }),
-                    ],
-                },
-            ],
-        });
+document.getElementById('save-docx').addEventListener('click', async () => {
+  const { Document, Packer, Paragraph } = window.docx;
 
-        // Gera o arquivo Word e inicia o download
-        docx.Packer.toBlob(doc).then((blob) => {
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'documento.docx';
-            a.click();
-            URL.revokeObjectURL(url);
-            alert('O arquivo Word foi gerado e baixado com sucesso! Verifique sua pasta de downloads.');
-        }).catch((error) => {
-            console.error('Erro ao gerar o arquivo Word:', error.message, error.stack);
-            alert('Ocorreu um erro ao gerar o arquivo Word.');
-        });
-    } catch (error) {
-        console.error('Erro inesperado:', error.message, error.stack);
-        alert('Ocorreu um erro inesperado ao tentar gerar o arquivo Word.');
-    }
+  // Obter o texto atualizado do editor
+  const updatedText = document.getElementById('docx-editor').value;
+
+  // Criar um novo documento com o texto atualizado
+  const doc = new Document({
+      sections: [
+          {
+              properties: {},
+              children: updatedText.split('\n').map((line) => new Paragraph(line)),
+          },
+      ],
+  });
+
+  // Gerar o arquivo .docx
+  const blob = await Packer.toBlob(doc);
+  saveAs(blob, 'documento-atualizado.docx');
 });

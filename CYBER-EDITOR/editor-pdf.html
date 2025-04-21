@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editor de Documentos Word</title>
+    <title>Editor de Arquivos .docx</title>
     <link rel="stylesheet" href="editor-pdf.css">
     <script src="https://unpkg.com/docx@7.1.0/build/index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
-    <script src="editor-pdf.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>Editor de Documentos Word</h1>
-        <textarea id="word-editor" placeholder="Digite o conteúdo do documento aqui..." aria-label="Editor de texto"></textarea>
-        <button id="download-word" aria-label="Baixar documento como Word">Baixar arquivo</button>
+        <h1>Editor de Arquivos Word</h1>
+        <input type="file" id="upload-docx" accept=".docx" aria-label="Carregar arquivo Word">
+        <textarea id="docx-editor" placeholder="Edite o conteúdo do documento aqui..." aria-label="Editor de texto"></textarea>
+        <button id="save-docx" aria-label="Salvar arquivo Word">Salvar Arquivo</button>
     </div>
+    <script src="editor-pdf.js"></script>
 </body>
 </html>
