@@ -1,6 +1,6 @@
 /* Estilo geral */
 html, body {
-    overflow: hidden; /* Remove a barra de rolagem */
+    overflow: auto; /* Permite a barra de rolagem quando necessário */
     height: 100%; /* Garante que o conteúdo ocupe toda a altura da tela */
     margin: 0; /* Remove margens padrão */
     padding: 0; /* Remove preenchimentos padrão */
@@ -155,7 +155,8 @@ body.light-mode #theme-toggle {
     text-align: center;
     color: white; /* Define a cor padrão do texto como branca */
     margin-bottom: 100px;
-    margin-top: 0px;
+    margin-top: 80px; /* Adiciona espaço abaixo da barra de navegação fixa */
+    padding-bottom: 20px; /* Adiciona espaço no final da página */
 }
 
 .container.text-center.mt-4 {
@@ -216,20 +217,15 @@ button:active {
 #image-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px; /* Ajustado para espaçamento consistente */
+    gap: 20px;
     justify-content: center;
     margin-top: 20px;
 }
 
 #image-container img {
-    border: 2px solid var(--highlight-color);
+    border: 2px solid #ccc;
     border-radius: 5px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#image-container img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 #image-container img.img-fluid.mb-3 {
