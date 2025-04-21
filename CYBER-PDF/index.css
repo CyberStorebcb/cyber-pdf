@@ -1,113 +1,206 @@
-/* Estilo geral */
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #0f0f13;
-    color: #1f1a1a;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    overflow-x: hidden;
+    color: #ffffff; /* Texto branco */
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    /* A line-height of 1.6 improves readability by providing sufficient spacing between lines of text */
+    line-height: 1.6;
 }
 
-/* logo */
-
-
-
-/* Título */
-h1 {
-    font-size: 2rem;
-    color: #4CAF50;
-    margin-bottom: 80px;
-    margin-top: 10px;
+/* Personalização para imagens com a classe img-fluid mb-3 */
+.img-fluid.mb-3 {
+    display: block;
+    margin: 0 auto; /* Centraliza a imagem horizontalmente */
+    max-width: 500px; /* Define um tamanho máximo */
+    height: auto; /* Mantém a proporção da imagem */
+    border-radius: 10px; /* Adiciona bordas arredondadas */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave para hover */
 }
 
-/* Título secundário (h2) */
-h2 {
-    margin-top: -10px;
-    font-size: 1.2rem; /* Aumenta o tamanho da fonte */
-    color: #f2f1f5; /* Cor dourada para destacar */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adiciona sombra ao texto */
-    margin-bottom: 15px; /* Ajusta o espaçamento inferior */
-    letter-spacing: 2px; /* Adiciona espaçamento entre as letras */
-    animation: fade-slide 3s ease-in-out infinite; /* Adiciona a nova animação */
-    font-family: 'Playfair Display', serif;
-    border: 1px solid #ccc; /* Adiciona uma borda ao redor do título */
-    padding: 2px 5px;
+.img-fluid.mb-3:hover {
+    transform: scale(1.0); /* Aumenta o tamanho da imagem ao passar o mouse */
+    box-shadow: 2px 2px 5px rgba(3, 238, 22, 0.5); /* Adiciona sombra */
 }
 
-
-/* Input de arquivo */
-input[type="file"] {
-    margin: 10px 0;
-    padding: 10px;
-    border: 1px solid #ccc;
+/* Barra de navegação */
+.navbar {
+    color: black;
+    padding: 5px 12px;
+    font-size: 16px;
+    border: 1 px solid white;
     border-radius: 5px;
-    background-color: #fff;
     cursor: pointer;
+    transition: background-color 0.5s ease, transform 0.5s ease;
 }
 
-/* Botão */
-button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-/* Imagem carregada */
-img {
-    margin-top: 0px;
-    margin-bottom: -50px;
-    max-width: 300px;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+.navbar .navbar-brand {
+    color: rgb(12, 238, 87);
+    font-weight: bold;
+    font-size: 1.5rem;
     
 }
 
-/* Contêiner de imagens */
-#image-container {
-    margin-bottom: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px; /* Reduz o espaçamento horizontal e vertical entre as imagens */
-    justify-content: center; /* Centraliza as imagens no contêiner */
-    border-top: 2px solid #ccc; /* Linha superior para separar o contêiner */
-    padding-top: 2px;
+.navbar .nav-link {
+    color: black;
+    transition: color 0.3s ease;
+    
 }
 
-/* Imagem carregada */
-#image-container img {
-    margin: 0; /* Remove margens extras */
-    max-width: 100px; /* Ajusta o tamanho das imagens */
-    border: 1px solid #ccc;
+.navbar .nav-link:hover {
+    color: black;
+    background-color: rgba(12, 228, 84, 0.527);
+    padding: 5px 12px;
+    font-size: 16px;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    transition: transform 0.2s ease;
-    padding: 5px; /* Adiciona um espaço interno para destacar a divisão */
+    transition: background-color 0.5s ease, transform 0.5s ease;
+}
+
+.navbar .dropdown-menu {
+    background-color: #0e0707;
+    border: none;
+}
+
+.navbar .dropdown-item {
+    color: #fdfafa;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .dropdown-item:hover {
+    color: #27c434;
+    padding: 5px 12px;
+    font-size: 16px;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.5s ease, transform 0.5s ease;
+}
+
+/* Conteúdo principal */
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: var(--highlight-color);
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+/* Input de arquivos */
+input[type="file"] {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+input[type="file"]:hover {
+    border-color: var(--highlight-color);
+    background-color: #333;
+}
+
+/* Botão de gerar PDF */
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+button:active {
+    background-color: #003f7f;
+}
+
+/* Container de imagens */
+#image-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#image-container img {
+    max-width: 150px;
+    border: 2px solid var(--highlight-color);
+    border-radius: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 #image-container img:hover {
-    transform: scale(1.05); /* Adiciona um efeito de zoom ao passar o mouse */
-    border-color: #4CAF50; /* Destaca a borda ao passar o mouse */
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
-pdf-input {
-    margin: 10px 0;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-    cursor: pointer;
+
+/* Responsividade */
+
+/* Tablet e dispositivos menores */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    input[type="file"] {
+        font-size: 0.9rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+
+    #image-container img {
+        max-width: 30%;
+    }
+}
+
+/* Dispositivos móveis */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+
+    input[type="file"] {
+        font-size: 0.8rem;
+    }
+
+    button {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+
+    #image-container img {
+        max-width: 25%;
+    }
 }
