@@ -248,6 +248,31 @@ button:active {
     padding: 5px;
 }
 
+/* Área de arrastar e soltar */
+.drop-zone {
+    border: 3px dashed #007bff;
+    border-radius: 10px;
+    padding: 50px; /* Aumenta o espaço interno */
+    text-align: center;
+    background-color: #f9f9f9;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    width: 90%; /* Ocupa 90% da largura do contêiner */
+    margin: 20px auto; /* Centraliza horizontalmente */
+    min-height: 200px; /* Define uma altura mínima maior */
+}
+
+.drop-zone:hover {
+    background-color: #e9ecef;
+    border-color: #0056b3;
+}
+
+.drop-zone.dragover {
+    background-color: #d1ecf1;
+    border-color: #007bff;
+}
+
 /* Responsividade */
 
 /* Telas grandes (acima de 1200px) */

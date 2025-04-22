@@ -52,11 +52,12 @@
     <!-- Conteúdo Principal -->
     <div class="container text-center mt-4">
         <img src="CYBER-PDF/imagens/logo.png" alt="Logo da Cyber Store" class="img-fluid mb-3">
-        <div class="row"></div>
-        <div class="row"></div>
             <div class="col-md-6 col-sm-12 d-flex flex-column align-items-center">
                 <h3>Cᴀʀʀᴇɢᴜᴇ ᴏs ᴀʀǫᴜɪᴠᴏs ᴀʙᴀɪxᴏ</h3>
-                <input type="file" id="file-input" accept="image/*" multiple class="form-control mt-3">
+                <div id="drop-zone" class="drop-zone">
+                    <p>Arraste suas imagens aqui ou clique para selecionar</p>
+                    <input type="file" id="file-input" accept="image/*" multiple class="form-control d-none">
+                </div>
             </div>
             <div class="col-md-6 col-sm-12">
                 <div id="image-container" class="d-flex flex-wrap gap-3 justify-content-center"></div>

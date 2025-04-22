@@ -5,6 +5,11 @@ function loadImages(event) {
     container.innerHTML = ''; // Limpa as imagens anteriores
 
     Array.from(files).forEach((file, index) => {
+        if (file.size > 5 * 1024 * 1024) { // 5 MB
+            alert('O arquivo é muito grande. Por favor, carregue arquivos menores que 5 MB.');
+            return;
+        }
+
         const reader = new FileReader();
         reader.onload = function (e) {
             const img = new Image();
@@ -95,57 +100,101 @@ function handleDrop(event) {
     }
 }
 
-// Função para gerar o PDF com uma imagem por página
+const dropZone = document.getElementById('drop-zone');
+const fileInput = document.getElementById('file-input');
+const imageContainer = document.getElementById('image-container');
+
+// Valida o arquivo antes de processá-lo
+function isValidFile(file) {
+    if (file.size > 5 * 1024 * 1024) {
+        alert('O arquivo é muito grande. Por favor, carregue arquivos menores que 5 MB.');
+        return false;
+    }
+    if (!file.type.startsWith('image/')) {
+        alert('Por favor, carregue apenas arquivos de imagem.');
+        return false;
+    }
+    return true;
+}
+
+// Exibe as imagens carregadas
+function displayImages(files) {
+    Array.from(files).forEach((file) => {
+        if (!isValidFile(file)) return;
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            img.alt = 'Imagem carregada';
+            img.classList.add('img-thumbnail');
+            img.style.maxWidth = '150px';
+            img.style.margin = '10px';
+            imageContainer.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+    });
+}
+
+// Evento de clique na área de arrastar e soltar
+dropZone.addEventListener('click', () => fileInput.click());
+
+// Evento de mudança no input de arquivos
+fileInput.addEventListener('change', (event) => {
+    displayImages(event.target.files);
+});
+
+// Evento de arrastar arquivos para a área
+dropZone.addEventListener('dragover', (event) => {
+    event.preventDefault();
+    dropZone.classList.add('dragover');
+});
+
+// Evento de sair da área de arrastar
+dropZone.addEventListener('dragleave', () => {
+    dropZone.classList.remove('dragover');
+});
+
+// Evento de soltar arquivos na área
+dropZone.addEventListener('drop', (event) => {
+    event.preventDefault();
+    dropZone.classList.remove('dragover');
+    displayImages(event.dataTransfer.files);
+});
+
+// Gera o PDF com as imagens carregadas
 document.getElementById('generate-pdf').addEventListener('click', async () => {
     const { jsPDF } = window.jspdf;
-    const pdf = new jsPDF('p', 'mm', 'a4'); // Formato A4
-    const pageWidth = 210; // Largura da página A4 em mm
-    const pageHeight = 297; // Altura da página A4 em mm
-    const margin = 10; // Margem superior e lateral
+    const pdf = new jsPDF('p', 'mm', 'a4');
+    const pageWidth = 210;
+    const pageHeight = 297;
+    const margin = 10;
 
-    const container = document.getElementById('image-container');
-    const images = container.getElementsByTagName('img');
-
+    const images = imageContainer.getElementsByTagName('img');
     if (images.length === 0) {
         alert("Por favor, carregue pelo menos uma imagem antes de gerar o PDF.");
         return;
     }
 
-    for (let i = 0; i < images.length; i++) {
-        const img = images[i];
+    Array.from(images).forEach((img, index) => {
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
-
         canvas.width = img.naturalWidth;
         canvas.height = img.naturalHeight;
         context.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight);
 
         const imgData = canvas.toDataURL('image/jpeg');
-
-        // Calcula a escala para ajustar a imagem ao PDF, mantendo o tamanho proporcional
-        const imgWidth = Math.min(img.naturalWidth * 0.264583, pageWidth - 2 * margin); // Converte px para mm
+        const imgWidth = Math.min(img.naturalWidth * 0.264583, pageWidth - 2 * margin);
         const imgHeight = (imgWidth / img.naturalWidth) * img.naturalHeight;
-
-        // Centraliza a imagem na página
         const xOffset = (pageWidth - imgWidth) / 2;
         const yOffset = (pageHeight - imgHeight) / 2;
 
-        // Adiciona a imagem ao PDF
         pdf.addImage(imgData, 'JPEG', xOffset, yOffset, imgWidth, imgHeight);
+        if (index < images.length - 1) pdf.addPage();
+    });
 
-        // Adiciona uma nova página, exceto para a última imagem
-        if (i < images.length - 1) {
-            pdf.addPage();
-        }
-    }
-
-    // Solicita o nome do arquivo ao usuário
     const fileName = prompt("Digite o nome do arquivo (sem extensão):", "imagens");
-    if (fileName) {
-        pdf.save(`${fileName}.pdf`); // Salva o PDF com o nome escolhido
-    } else {
-        alert("O nome do arquivo não foi fornecido. O PDF não será salvo.");
-    }
+    if (fileName) pdf.save(`${fileName}.pdf`);
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -175,28 +224,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Função para carregar e exibir as imagens
-document.getElementById('file-input').addEventListener('change', (event) => {
-    const files = event.target.files;
-    const container = document.getElementById('image-container');
-    container.innerHTML = ''; // Limpa o contêiner antes de adicionar novas imagens
-
-    Array.from(files).forEach((file) => {
-        if (!file.type.startsWith('image/')) {
-            alert('Por favor, carregue apenas arquivos de imagem.');
-            return;
-        }
-
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            const img = document.createElement('img');
-            img.src = e.target.result;
-            img.alt = 'Imagem carregada';
-            img.draggable = true; // Torna a imagem arrastável
-
-            // Adiciona a imagem ao contêiner
-            container.appendChild(img);
-        };
-        reader.readAsDataURL(file);
-    });
+document.getElementById('clear-images').addEventListener('click', () => {
+    imageContainer.innerHTML = '';
 });
