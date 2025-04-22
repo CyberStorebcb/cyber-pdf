@@ -258,9 +258,9 @@ button:active {
     color: #333;
     cursor: pointer;
     transition: background-color 0.3s ease, border-color 0.3s ease;
-    width: 90%; /* Ocupa 90% da largura do contêiner */
+    width: 100%; /* Ocupa 90% da largura do contêiner */
     margin: 20px auto; /* Centraliza horizontalmente */
-    min-height: 200px; /* Define uma altura mínima maior */
+    min-height: 100px; /* Define uma altura mínima maior */
 }
 
 .drop-zone:hover {
