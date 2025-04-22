@@ -217,23 +217,24 @@ button:active {
 #image-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+    gap: 15px; /* Espaçamento entre as imagens */
+    justify-content: center; /* Centraliza as imagens no contêiner */
     margin-top: 20px;
 }
 
 #image-container img {
+    width: 150px; /* Largura fixa para todas as imagens */
+    height: 150px; /* Altura fixa para todas as imagens */
+    object-fit: cover; /* Garante que a imagem se ajuste ao tamanho sem distorcer */
     border: 2px solid #ccc;
     border-radius: 5px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
 }
 
-#image-container img.img-fluid.mb-3 {
-    max-width: 100%;
-    height: auto;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+#image-container img:hover {
+    transform: scale(1.05); /* Aumenta levemente a imagem ao passar o mouse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Estilo para a label */

@@ -175,6 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Função para carregar e exibir as imagens
 document.getElementById('file-input').addEventListener('change', (event) => {
     const files = event.target.files;
     const container = document.getElementById('image-container');
@@ -191,9 +192,9 @@ document.getElementById('file-input').addEventListener('change', (event) => {
             const img = document.createElement('img');
             img.src = e.target.result;
             img.alt = 'Imagem carregada';
-            img.classList.add('img-thumbnail');
-            img.style.maxWidth = '200px';
-            img.style.margin = '10px';
+            img.draggable = true; // Torna a imagem arrastável
+
+            // Adiciona a imagem ao contêiner
             container.appendChild(img);
         };
         reader.readAsDataURL(file);
