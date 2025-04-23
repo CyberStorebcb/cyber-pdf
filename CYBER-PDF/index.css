@@ -80,7 +80,7 @@ body.light-mode .navbar .dropdown-item:hover {
 
 /* Botão de alternância */
 #theme-toggle {
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
     border: 1px solid #ccc;
     padding: 8px 16px;
     border-radius: 5px;

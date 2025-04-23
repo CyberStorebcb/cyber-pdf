@@ -124,13 +124,58 @@ function displayImages(files) {
 
         const reader = new FileReader();
         reader.onload = (e) => {
+            // Cria um contêiner para a imagem, o nome do arquivo e o botão de exclusão
+            const imageWrapper = document.createElement('div');
+            imageWrapper.style.textAlign = 'center';
+            imageWrapper.style.margin = '10px';
+            imageWrapper.style.position = 'relative'; // Necessário para posicionar o botão de exclusão
+            imageWrapper.style.display = 'inline-block'; // Garante que o contêiner seja tratado como um bloco
+
+            // Cria a imagem
             const img = document.createElement('img');
             img.src = e.target.result;
             img.alt = 'Imagem carregada';
             img.classList.add('img-thumbnail');
             img.style.maxWidth = '150px';
-            img.style.margin = '10px';
-            imageContainer.appendChild(img);
+            img.style.marginBottom = '5px';
+
+            // Cria o elemento para o nome do arquivo
+            const fileName = document.createElement('p');
+            fileName.textContent = file.name;
+            fileName.style.fontSize = '0.9rem';
+            fileName.style.color = '#fff'; // Define a cor do texto como branco
+            fileName.style.margin = '0';
+
+            // Cria o botão de exclusão
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = '❌';
+            deleteButton.style.position = 'absolute';
+            deleteButton.style.top = '5px'; // Ajusta a posição superior
+            deleteButton.style.right = '18%'; // Ajusta a posição à direita
+            deleteButton.style.background = 'none'; // Cor de fundo para destaque
+            deleteButton.style.color = 'white'; // Cor do texto
+            deleteButton.style.border = 'none';
+            deleteButton.style.borderRadius = '100%';
+            deleteButton.style.width = '25px';
+            deleteButton.style.height = '25px';
+            deleteButton.style.cursor = 'pointer';
+            deleteButton.style.display = 'flex';
+            deleteButton.style.justifyContent = 'center';
+            deleteButton.style.alignItems = 'center';
+            deleteButton.style.textShadow = '0 0 10px rgba(15, 11, 11, 0.7)'; // Sombra para destacar o texto
+            
+            // Adiciona o evento de exclusão
+            deleteButton.addEventListener('click', () => {
+                imageWrapper.remove(); // Remove o contêiner da imagem
+            });
+
+            // Adiciona a imagem, o nome e o botão ao contêiner
+            imageWrapper.appendChild(img);
+            imageWrapper.appendChild(fileName);
+            imageWrapper.appendChild(deleteButton);
+
+            // Adiciona o contêiner ao contêiner de imagens
+            imageContainer.appendChild(imageWrapper);
         };
         reader.readAsDataURL(file);
     });
@@ -165,10 +210,10 @@ dropZone.addEventListener('drop', (event) => {
 // Gera o PDF com as imagens carregadas
 document.getElementById('generate-pdf').addEventListener('click', async () => {
     const { jsPDF } = window.jspdf;
-    const pdf = new jsPDF('p', 'mm', 'a4');
-    const pageWidth = 210;
-    const pageHeight = 297;
-    const margin = 10;
+    const pdf = new jsPDF('p', 'mm', 'a4'); // Formato A4
+    const pageWidth = 210; // Largura da página em mm
+    const pageHeight = 297; // Altura da página em mm
+    const margin = 10; // Margem em mm
 
     const images = imageContainer.getElementsByTagName('img');
     if (images.length === 0) {
@@ -184,12 +229,28 @@ document.getElementById('generate-pdf').addEventListener('click', async () => {
         context.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight);
 
         const imgData = canvas.toDataURL('image/jpeg');
-        const imgWidth = Math.min(img.naturalWidth * 0.264583, pageWidth - 2 * margin);
-        const imgHeight = (imgWidth / img.naturalWidth) * img.naturalHeight;
-        const xOffset = (pageWidth - imgWidth) / 2;
-        const yOffset = (pageHeight - imgHeight) / 2;
+
+        // Redimensionar a imagem para caber completamente na página do PDF
+        const imgAspectRatio = img.naturalWidth / img.naturalHeight;
+        const pageAspectRatio = (pageWidth - 2 * margin) / (pageHeight - 2 * margin);
+
+        let imgWidth, imgHeight;
+        if (imgAspectRatio > pageAspectRatio) {
+            // Ajustar pela largura
+            imgWidth = pageWidth - 2 * margin;
+            imgHeight = imgWidth / imgAspectRatio;
+        } else {
+            // Ajustar pela altura
+            imgHeight = pageHeight - 2 * margin;
+            imgWidth = imgHeight * imgAspectRatio;
+        }
+
+        const xOffset = (pageWidth - imgWidth) / 2; // Centralizar horizontalmente
+        const yOffset = (pageHeight - imgHeight) / 2; // Centralizar verticalmente
 
         pdf.addImage(imgData, 'JPEG', xOffset, yOffset, imgWidth, imgHeight);
+
+        // Adicionar uma nova página, exceto para a última imagem
         if (index < images.length - 1) pdf.addPage();
     });
 
