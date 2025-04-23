@@ -152,11 +152,10 @@ body.light-mode #theme-toggle {
 
 /* Conteúdo principal */
 .container {
-    text-align: center;
-    color: white; /* Define a cor padrão do texto como branca */
-    margin-bottom: 100px;
-    margin-top: 80px; /* Adiciona espaço abaixo da barra de navegação fixa */
-    padding-bottom: 20px; /* Adiciona espaço no final da página */
+    display: flex;
+    flex-direction: column; /* Empilha os itens verticalmente */
+    align-items: center; /* Centraliza os itens horizontalmente */
+    gap: 20px; /* Espaçamento entre os itens */
 }
 
 .container.text-center.mt-4 {
@@ -166,12 +165,6 @@ body.light-mode #theme-toggle {
     justify-content: center; /* Centraliza verticalmente */
     min-height: 100vh; /* Garante que o container ocupe a altura total da tela */
     margin: 0 auto; /* Centraliza horizontalmente se necessário */
-}
-
-h3 {
-    font-size: 1.5rem;
-    color: #ccc; /* Define o subtítulo com letras cinza claro */
-    text-shadow: 2px 2px 4px #000, 0 0 10px black, 0 0 20px black; /* Adiciona sombra preta e brilho ao texto */
 }
 
 /* Input de arquivos */
@@ -213,12 +206,20 @@ button:active {
     background-color: #003f7f;
 }
 
+/* Botão de geração de PDF */
+#generate-pdf {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
 /* Container de imagens */
 #image-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Permite que as imagens quebrem linha */
+    justify-content: center; /* Centraliza as imagens horizontalmente */
     gap: 15px; /* Espaçamento entre as imagens */
-    justify-content: center; /* Centraliza as imagens no contêiner */
+    align-items: center; /* Centraliza as imagens verticalmente */
     margin-top: 20px;
 }
 
@@ -250,17 +251,26 @@ button:active {
 
 /* Área de arrastar e soltar */
 .drop-zone {
-    border: 3px dashed #007bff;
-    border-radius: 10px;
-    padding: 50px; /* Aumenta o espaço interno */
-    text-align: center;
-    background-color: #f9f9f9;
-    color: #333;
-    cursor: pointer;
+    text-align: center; /* Centraliza o texto horizontalmente */
+    display: flex; /* Ativa o flexbox */
+    flex-direction: column; /* Organiza os elementos verticalmente */
+    align-items: center; /* Centraliza os itens horizontalmente */
+    justify-content: center; /* Centraliza os itens verticalmente */
+    border: 2px dashed #007bff; /* Estilo da borda */
+    border-radius: 10px; /* Bordas arredondadas */
+    padding: 20px; /* Espaçamento interno */
+    width: 100%; /* Largura total */
+    max-width: 400px; /* Largura máxima */
+    background-color: #f9f9f9; /* Cor de fundo */
+    color: #333; /* Cor do texto */
+    cursor: pointer; /* Cursor de ponteiro */
     transition: background-color 0.3s ease, border-color 0.3s ease;
-    width: 100%; /* Ocupa 90% da largura do contêiner */
-    margin: 20px auto; /* Centraliza horizontalmente */
-    min-height: 100px; /* Define uma altura mínima maior */
+}
+
+/* Estilo do texto dentro da área */
+.drop-zone p {
+    margin: 0;
+    text-align: center;
 }
 
 .drop-zone:hover {
@@ -283,6 +293,7 @@ button:active {
 
     .img-fluid.mb-3 {
         max-width: 500px;
+        margin-bottom: 0; /* Remove a margem inferior da imagem */
     }
 
     button {
@@ -307,6 +318,7 @@ button:active {
 
     .img-fluid.mb-3 {
         max-width: 400px;
+        margin-bottom: 0; /* Remove a margem inferior da imagem */
     }
 
     button {
@@ -340,6 +352,7 @@ button:active {
 
     .img-fluid.mb-3 {
         max-width: 300px;
+        margin-bottom: 0; /* Remove a margem inferior da imagem */
     }
 
     h3 {
@@ -373,6 +386,7 @@ button:active {
 
     .img-fluid.mb-3 {
         max-width: 250px;
+        margin-bottom: 0; /* Remove a margem inferior da imagem */
     }
 
     h3 {
@@ -387,4 +401,9 @@ button:active {
         font-size: 0.8rem;
         padding: 6px 10px;
     }
+}
+
+button, #theme-toggle {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-radius: 5px;
 }

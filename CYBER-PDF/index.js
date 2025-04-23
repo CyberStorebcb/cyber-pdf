@@ -5,6 +5,7 @@ function loadImages(event) {
     container.innerHTML = ''; // Limpa as imagens anteriores
 
     Array.from(files).forEach((file, index) => {
+        // Valida o tamanho do arquivo
         if (file.size > 5 * 1024 * 1024) { // 5 MB
             alert('O arquivo é muito grande. Por favor, carregue arquivos menores que 5 MB.');
             return;
@@ -25,6 +26,7 @@ function loadImages(event) {
                 let width = img.width;
                 let height = img.height;
 
+                // Redimensiona a imagem proporcionalmente
                 if (width > height) {
                     if (width > MAX_WIDTH) {
                         height *= MAX_WIDTH / width;
@@ -37,6 +39,7 @@ function loadImages(event) {
                     }
                 }
 
+                // Configura o canvas com o novo tamanho
                 canvas.width = width;
                 canvas.height = height;
                 ctx.drawImage(img, 0, 0, width, height);
@@ -100,6 +103,7 @@ function handleDrop(event) {
     }
 }
 
+// Seletores Globais
 const dropZone = document.getElementById('drop-zone');
 const fileInput = document.getElementById('file-input');
 const imageContainer = document.getElementById('image-container');
@@ -258,6 +262,7 @@ document.getElementById('generate-pdf').addEventListener('click', async () => {
     if (fileName) pdf.save(`${fileName}.pdf`);
 });
 
+// Alternância de Tema
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
@@ -285,6 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Botão para limpar imagens carregadas
 document.getElementById('clear-images').addEventListener('click', () => {
     imageContainer.innerHTML = '';
 });

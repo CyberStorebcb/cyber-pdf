@@ -1,41 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <link rel="stylesheet" href="CYBER-PDF/index.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-    <script src="CYBER-PDF/index.js" defer></script>
+    <!-- Metadados -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cyber Store</title>
-    <!-- Bootstrap CSS -->
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="CYBER-PDF/index.css">
+
+    <!-- Bibliotecas Externas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+
+    <!-- Script Principal -->
+    <script src="CYBER-PDF/index.js" defer></script>
 </head>
 <body>
-
     <!-- Barra de Navegação -->
     <nav class="navbar navbar-expand-md bg-secondary navbar-light fixed-top">
         <div class="container-fluid">
+            <!-- Logo da Marca -->
             <a class="navbar-brand" href="#">Cyber Store</a>
+
+            <!-- Botão para Navegação Responsiva -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
+            <!-- Links de Navegação -->
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Word</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Excel</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Testar</a>
-                    </li>
+                    <!-- Links Principais -->
+                    <li class="nav-item"><a class="nav-link active" href="#">Word</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Excel</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Testar</a></li>
+
+                    <!-- Dropdown de Mais Opções -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Mais opções
-                        </a>
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mais opções</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Loja</a></li>
                             <li><a class="dropdown-item" href="https://www.instagram.com/cyberstorebcb/" target="_blank">Instagram</a></li>
@@ -44,27 +48,28 @@
                     </li>
                 </ul>
             </div>
-            <!-- Botão para alternar entre os modos -->
+
+            <!-- Botão para Alternar Tema -->
             <button id="theme-toggle" class="btn btn-outline-secondary ms-3" aria-label="Alternar entre modo claro e escuro">🌙</button>
         </div>
     </nav>
 
     <!-- Conteúdo Principal -->
     <div class="container text-center mt-4">
+        <!-- Logo -->
         <img src="CYBER-PDF/imagens/logo.png" alt="Logo da Cyber Store" class="img-fluid mb-3">
-            <div class="col-md-6 col-sm-12 d-flex flex-column align-items-center">
-                <h3>Cᴀʀʀᴇɢᴜᴇ ᴏs ᴀʀǫᴜɪᴠᴏs ᴀʙᴀɪxᴏ</h3>
-                <div id="drop-zone" class="drop-zone">
-                    <p>Arraste suas imagens aqui ou clique para selecionar</p>
-                    <input type="file" id="file-input" accept="image/*" multiple class="form-control d-none">
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-12">
-                <div id="image-container" class="d-flex flex-wrap gap-3 justify-content-center"></div>
-                <button id="generate-pdf" class="btn btn-primary mt-3" aria-label="Gerar PDF dos arquivos carregados">Gerar PDF</button>
-            </div>
-        </div>
-    </div>
 
+        <!-- Área de Upload -->
+        <div id="drop-zone" class="drop-zone">
+            <p>𝙰𝚛𝚛𝚊𝚜𝚝𝚎 𝚊 𝚒𝚖𝚊𝚐𝚎𝚖 𝚘𝚞 𝚌𝚕𝚒𝚚𝚞𝚎 𝚙𝚊𝚛𝚊 𝚜𝚎𝚕𝚎𝚌𝚒𝚘𝚗𝚊𝚛 ☺️</p>
+            <input type="file" id="file-input" accept="image/*" multiple class="form-control d-none">
+        </div>
+
+        <!-- Contêiner de Imagens -->
+        <div id="image-container" class="d-flex flex-wrap gap-3 justify-content-center mt-3"></div>
+
+        <!-- Botão para Gerar PDF -->
+        <button id="generate-pdf" class="btn btn-primary mt-3" aria-label="Gerar PDF dos arquivos carregados">Gerar PDF</button>
+    </div>
 </body>
 </html>
